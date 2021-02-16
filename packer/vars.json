@@ -1,0 +1,8 @@
+{
+    "location": "westus2",
+    "image_name": "web-server-packer-image",
+    "image_rg_name": "web-server-packer-rg",
+
+    "webapp_name": "demo-webapp",
+    "webapp_nginx_conf": "demo-webapp-nginx.conf"
+}

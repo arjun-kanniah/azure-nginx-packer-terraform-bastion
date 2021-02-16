@@ -1,0 +1,49 @@
+---
+- name: Setup and install nginx to serve a static demo webpage on port 8080
+  hosts: localhost
+  connection: local
+  become: yes
+
+  tasks:
+    
+    - name: Install latest version of nginx
+      apt:
+        name: nginx
+        state: latest
+
+    - name: Start nginx service
+      service:
+        name: nginx
+        state: started
+
+    - name: Copy nginx config file for the demo webapp
+      copy:
+        src: '/tmp/{{ webapp_nginx_conf }}' 
+        dest: '/etc/nginx/sites-available/{{ webapp_nginx_conf }}'
+
+    - name: Create a symlink to enable static demo webapp
+      file:
+        src: '/etc/nginx/sites-available/{{ webapp_nginx_conf }}'
+        dest: '/etc/nginx/sites-enabled/{{ webapp_nginx_conf }}'
+        state: link
+
+    - name: Remove the default nginx static webapp
+      file:
+        path: '/etc/nginx/sites-enabled/default'
+        state: absent
+
+    - name: Create app directory for demo webapp
+      file:
+        path: '/var/www/{{ webapp_name }}/'
+        state: directory
+
+    - name: Copy webapp content to the necessary location
+      copy:
+        src: '/tmp/{{ webapp_name }}/'
+        dest: '/var/www/{{ webapp_name }}'
+
+    - name: Restart and enable nginx service to start at boot time
+      service:
+        name: nginx
+        state: restarted
+        enabled: yes
