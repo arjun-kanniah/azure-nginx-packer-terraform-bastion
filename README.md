@@ -2,7 +2,7 @@
 Terraform powered IaaS to provision infrastructure in Azure and deploy a Packer built web server base image
 
 ## Introduction
-This project will deploy a certain number of virtual machines within an Availability Set sitting behind an internet facing Load Balancer on Azure. All the necessary resources that are required viz., Resource Groups, Virtual Networks, Subnets, Network Interface Cards, Load Balancer and associated components are also deployed. Network security is also provided through Network Security Groups and attached to the Subnet.
+This project will deploy a certain number of virtual machines through a Scale Set sitting behind an internet facing Load Balancer on Azure. All the necessary resources that are required viz., Resource Groups, Virtual Networks, Subnets, Network Interface Cards, Load Balancer and associated components are also deployed. Network security is also provided through Network Security Groups and attached to the Subnet.
 
 ## Dependencies
 1. Create an [Azure Account](https://portal.azure.com) 
