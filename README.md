@@ -47,6 +47,3 @@ This project will deploy a certain number of virtual machines within an Availabi
 
 3. Terraform output:
 ![Terraform output](screenshots/terraform-output.PNG)
-
-4. Open the [web server URL](http://web-server-lb.westus2.cloudapp.azure.com/) in the browser
-![Website output](screenshots/web-server-browser.PNG)
